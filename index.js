@@ -48,7 +48,7 @@ app.get("/api/users", (_req, res) => {
   });
 });
 
-//sign up
+//sign up 
 app.post("/signup", async (req, res) => {
   // console.log(req.body);
   const { email } = req.body;
@@ -79,7 +79,7 @@ app.post("/login", (req, res) => {
         email: result.email,
         image: result.image,
       };
-      console.log(dataSend);
+      // console.log(dataSend);
       res.send({
         message: "Login is successfully",
         alert: true,
@@ -136,7 +136,7 @@ app.post("/create-checkout-session",async(req,res)=>{
           mode : "payment",
           payment_method_types : ['card'],
           billing_address_collection : "auto",
-          shipping_options : [{shipping_rate : "shr_1N0qDnSAq8kJSdzMvlVkJdua"}],
+          shipping_options : [{shipping_rate : "shr_1NQuigLxVG3Ehu4hdfeXAXkN"}],
 
           line_items : req.body.map((item)=>{
             return{
@@ -144,7 +144,7 @@ app.post("/create-checkout-session",async(req,res)=>{
                 currency : "Php",
                 product_data : {
                   name : item.name,
-                  // images : [item.image]
+                  images : [item.image]
                 },
                 unit_amount : item.price * 100,
               },
